@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="bootstrap.css" />
         <title>Alterar time</title>
     </head>
     <body>
@@ -17,7 +18,7 @@
         <fieldset>
             <form action="AlterarServlet" name="form">
                 <label for="codigo">Código:</label><br />
-                <%
+                <% 
                     out.println("<input type=\"text\" readonly=\"true\" name=\"codigo\" id =\"codigo\" value=\"" + request.getParameter("codigo") + "\" size=\"8\" /><br />");
                 %>
                 <label for="nomeTime">Nome:</label><br />
@@ -54,6 +55,7 @@
                 %>
                 <label for="historico">Histórico:</label><br />
                 <%
+                    request.setCharacterEncoding("UTF-8");
                     out.println("<textarea name=\"historico\" value =\"\" style=\"width: 500px\">" + request.getParameter("historico") + "</textarea>");
                 %>
                 <br />

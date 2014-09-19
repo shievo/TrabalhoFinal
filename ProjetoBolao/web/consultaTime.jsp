@@ -12,6 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="bootstrap.css" />
         <title>Consulta de Times</title>
     </head>
     <body>
@@ -99,18 +100,18 @@
                 out.println("<td><form name=\"alterarForm\" action=\"alterarTime.jsp\" method=\"POST\">");
                 out.println("<input type=\"hidden\" name=\"codigo\" id=\"codigo\" value=\"" + time.getCodigo() + "\"/>");
                 out.println("<input type=\"hidden\" name=\"nome\" id=\"nome\" value=\"" + time.getNome() + "\"/>");
-                out.println("<input type=\"hidden\" name=\"endereco\" id=\"endereco\" value=\"" + time.getEndereco()+ "\"/>");
-                out.println("<input type=\"hidden\" name=\"cidade\" id=\"cidade\" value=\"" + time.getCidade()+ "\"/>");
-                out.println("<input type=\"hidden\" name=\"email\" id=\"email\" value=\"" + time.getEmail()+ "\"/>");
-                out.println("<input type=\"hidden\" name=\"site\" id=\"site\" value=\"" + time.getSite()+ "\"/>");
-                out.println("<input type=\"hidden\" name=\"fone\" id=\"fone\" value=\"" + time.getFone()+ "\"/>");
-                out.println("<input type=\"hidden\" name=\"data_cadastro\" id=\"data_cadastro\" value=\"" + time.getData_cadastro()+ "\"/>");
-                out.println("<input type=\"hidden\" name=\"data_fundacao\" id=\"data_fundacao\" value=\"" + time.getData_fundacao()+ "\"/>");
-                out.println("<input type=\"hidden\" name=\"historico\" id=\"historico\" value=\"" + time.getHistorico()+ "\"/>");
-                
+                out.println("<input type=\"hidden\" name=\"endereco\" id=\"endereco\" value=\"" + time.getEndereco() + "\"/>");
+                out.println("<input type=\"hidden\" name=\"cidade\" id=\"cidade\" value=\"" + time.getCidade() + "\"/>");
+                out.println("<input type=\"hidden\" name=\"email\" id=\"email\" value=\"" + time.getEmail() + "\"/>");
+                out.println("<input type=\"hidden\" name=\"site\" id=\"site\" value=\"" + time.getSite() + "\"/>");
+                out.println("<input type=\"hidden\" name=\"fone\" id=\"fone\" value=\"" + time.getFone() + "\"/>");
+                out.println("<input type=\"hidden\" name=\"data_cadastro\" id=\"data_cadastro\" value=\"" + time.getData_cadastro() + "\"/>");
+                out.println("<input type=\"hidden\" name=\"data_fundacao\" id=\"data_fundacao\" value=\"" + time.getData_fundacao() + "\"/>");
+                out.println("<input type=\"hidden\" name=\"historico\" id=\"historico\" value=\"" + time.getHistorico() + "\"/>");
+
                 out.println("<input type=\"submit\" value=\"Alterar\" name=\"btAlterar\" id=\"btAlterar\" />");
                 out.println("</form></td>");
-                
+
                 out.println("<td><form name=\"excluirForm\" action=\"ExcluirTimeServlet\" method=\"POST\">");
                 out.println("<input type=\"hidden\" name=\"codigo\" id=\"codigo\" value=\"" + time.getCodigo() + "\"/>");
                 out.println("<input type=\"submit\" value=\"Excluir >>\" name=\"btServletExcluir\" id=\"btServletExcluir\" />");
