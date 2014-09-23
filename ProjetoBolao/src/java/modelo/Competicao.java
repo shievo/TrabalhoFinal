@@ -26,8 +26,8 @@ public class Competicao implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name = "codigo")
-    private Integer codigo;
+    @Column(name = "cod_competicao")
+    private Integer cod_competicao;
 
     @OneToOne(fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
@@ -41,12 +41,12 @@ public class Competicao implements Serializable {
     @Column(name = "data_fim", nullable = true)
     private Date data_fim;
 
-    public Integer getCodigo() {
-        return codigo;
+    public Integer getCod_competicao() {
+        return cod_competicao;
     }
 
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
+    public void setCod_competicao(Integer cod_competicao) {
+        this.cod_competicao = cod_competicao;
     }
 
     public AssociarTimeCompeticao getAssociar_time_competicao() {

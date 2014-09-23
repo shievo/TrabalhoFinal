@@ -19,13 +19,8 @@ public class Time implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name = "codigo")
-    private Integer codigo;
-    
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @PrimaryKeyJoinColumn
-    private AssociarTimeCompeticao associar_time_competicao;
+    @Column(name = "cod_time")
+    private Integer cod_time;
 
     @Column(name = "nome", length = 50)
     private String nome;
@@ -71,14 +66,14 @@ public class Time implements Serializable {
     public Time() {
     }
 
-    public int getCodigo() {
-        return codigo;
+    public Integer getCod_time() {
+        return cod_time;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setCod_time(Integer cod_time) {
+        this.cod_time = cod_time;
     }
-
+    
     public String getNome() {
         return nome;
     }
@@ -149,13 +144,5 @@ public class Time implements Serializable {
 
     public void setData_cadastro(Date data_cadastro) {
         this.data_cadastro = data_cadastro;
-    }
-
-    public AssociarTimeCompeticao getAssociar_time_competicao() {
-        return associar_time_competicao;
-    }
-
-    public void setAssociar_time_competicao(AssociarTimeCompeticao associar_time_competicao) {
-        this.associar_time_competicao = associar_time_competicao;
     }
 }
