@@ -1,6 +1,9 @@
 package modelo;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,8 +11,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "Apostador")
@@ -42,6 +48,11 @@ public class Apostador {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cod_grupo_de_apostadores")
     private GrupoDeApostadores grupo;
+
+    @OneToMany(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "cod_aposta")
+    @Fetch(FetchMode.JOIN)
+    private List<Aposta> apostas = new ArrayList<Aposta>();
 
     public String getNome() {
         return nome;
