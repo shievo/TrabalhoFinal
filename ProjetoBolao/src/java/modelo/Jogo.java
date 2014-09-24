@@ -6,20 +6,47 @@
 
 package modelo;
 
+import java.io.Serializable;
 import java.sql.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author Renan
  */
-public class Jogo {
-    
+
+@Entity
+@Table(name = "jogo")
+public class Jogo implements Serializable {
+
+    @Id
+    @GeneratedValue
+    @Column(name = "cod_jogo")
+    private Integer cod_jogo;
+
+    @Column(name = "time1", length = 150, nullable = true)
     private String time1;
+    
+    @Column(name = "palcar_time1")
     private int palcar_time1;
+    
+    @Column(name = "time2", length = 150, nullable = true)
     private String time2;
+    
+    @Column(name = "palcar_time2")
     private int palcar_time2;
-    private Date dat_jogo;
-    private String vencedor;
+    
+    @Column(name = "data_jogo", nullable = true)
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date data_jogo;
+    
+    @Column(name = "vencedor", nullable = true)
+    private Time vencedor;
 
     public void setTime1(String time1) {
         this.time1 = time1;
@@ -37,12 +64,8 @@ public class Jogo {
         this.palcar_time2 = palcar_time2;
     }
 
-    public void setDat_jogo(Date dat_jogo) {
-        this.dat_jogo = dat_jogo;
-    }
-
-    public void setVencedor(String vencedor) {
-        this.vencedor = vencedor;
+    public void setData_jogo(Date dat_jogo) {
+        this.data_jogo = dat_jogo;
     }
 
     public String getTime1() {
@@ -61,12 +84,23 @@ public class Jogo {
         return palcar_time2;
     }
 
-    public Date getDat_jogo() {
-        return dat_jogo;
+    public Date getData_jogo() {
+        return data_jogo;
     }
 
-    public String getVencedor() {
+    public Integer getCod_jogo() {
+        return cod_jogo;
+    }
+
+    public void setCod_jogo(Integer cod_jogo) {
+        this.cod_jogo = cod_jogo;
+    }
+
+    public Time getVencedor() {
         return vencedor;
     }
-     
+
+    public void setVencedor(Time vencedor) {
+        this.vencedor = vencedor;
+    }
 }
