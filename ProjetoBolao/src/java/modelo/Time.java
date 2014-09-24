@@ -157,4 +157,12 @@ public class Time implements Serializable {
     public void setData_cadastro(Date data_cadastro) {
         this.data_cadastro = data_cadastro;
     }
+
+    public List<AssociarTimeCompeticao> getAssociar_time_competicao() {
+        return associar_time_competicao;
+    }
+
+    public void setAssociar_time_competicao(List<AssociarTimeCompeticao> associar_time_competicao) {
+        this.associar_time_competicao = associar_time_competicao;
+    }
 }
