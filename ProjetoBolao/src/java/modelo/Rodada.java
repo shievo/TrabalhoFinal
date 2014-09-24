@@ -31,10 +31,10 @@ public class Rodada implements Serializable {
     @Column(name = "cod_rodada")
      private Integer cod_rodada;
         
-    @Column(name = "nome", length = 150, nullable = true)
+    @Column(name = "nome",nullable = true)
     private String nome;
     
-    @Column(name = "data_final_apostas", length = 150, nullable = true)
+    @Column(name = "data_final_apostas", nullable = true)
     private Date data_final_apostas;
 
     @ManyToOne(cascade={CascadeType.ALL})
@@ -47,7 +47,7 @@ public class Rodada implements Serializable {
     @Fetch(FetchMode.JOIN)
     private List<Jogo> jogos = new ArrayList<Jogo>();
 
-    public void setCodigo(Integer codigo) {
+    public void setCod_rodada(Integer codigo) {
         this.cod_rodada = codigo;
     }
     
@@ -59,7 +59,7 @@ public class Rodada implements Serializable {
         this.data_final_apostas = data_final_apostas;
     }
 
-    public Integer getCodigo() {
+    public Integer getCod_rodada() {
         return cod_rodada;
     }
 
