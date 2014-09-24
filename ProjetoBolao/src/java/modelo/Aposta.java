@@ -1,5 +1,6 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +14,7 @@ import javax.persistence.Temporal;
 
 @Entity
 @Table(name = "Aposta")
-public class Aposta {
+public class Aposta implements Serializable {
 
     @Id
     @GeneratedValue

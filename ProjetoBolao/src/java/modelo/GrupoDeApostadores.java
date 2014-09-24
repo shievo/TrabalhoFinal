@@ -1,5 +1,6 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -15,7 +16,7 @@ import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "GrupoDeApostadores")
-public class GrupoDeApostadores {
+public class GrupoDeApostadores implements Serializable {
 
     @Id
     @GeneratedValue
@@ -25,8 +26,8 @@ public class GrupoDeApostadores {
     @Column(name = "nome", length = 50)
     private String nome;
 
-    @OneToMany(cascade={CascadeType.ALL})
-    @JoinColumn(name="cod_apostador")
+    @OneToMany(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "cod_apostador")
     @Fetch(FetchMode.JOIN)
     private List<Apostador> apostadores = new ArrayList<Apostador>();
 
@@ -45,7 +46,7 @@ public class GrupoDeApostadores {
     public void setApostadores(List<Apostador> apostadores) {
         this.apostadores = apostadores;
     }
-    
+
     public String getNome() {
         return nome;
     }

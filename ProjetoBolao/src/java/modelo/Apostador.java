@@ -1,5 +1,6 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,7 +20,7 @@ import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "Apostador")
-public class Apostador {
+public class Apostador implements Serializable {
 
     @Id
     @GeneratedValue
