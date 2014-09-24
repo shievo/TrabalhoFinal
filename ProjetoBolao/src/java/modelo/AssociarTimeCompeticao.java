@@ -3,45 +3,45 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package modelo;
-
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 
 /**
  *
  * @author Kelvin
  */
-
 @Entity
 @Table(name = "competicao")
 public class AssociarTimeCompeticao implements Serializable {
-        
+
     @Id
     @GeneratedValue
-    @Column(name = "codigo")
-    private Integer codigo;
-    
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "time", cascade = CascadeType.ALL)
+    @Column(name = "cod_associar_time_competicao")
+    private Integer cod_associar_time_competicao;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "codigo")
     private Time time;
-    
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "competicao", cascade = CascadeType.ALL)
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "codigo")
     private Competicao competicao;
 
-    public Integer getCodigo() {
-        return codigo;
+    public Integer getCod_associar_time_competicao() {
+        return cod_associar_time_competicao;
     }
 
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
+    public void setCod_associar_time_competicao(Integer cod_associar_time_competicao) {
+        this.cod_associar_time_competicao = cod_associar_time_competicao;
     }
 
     public Time getTime() {
