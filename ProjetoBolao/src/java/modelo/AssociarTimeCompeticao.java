@@ -20,27 +20,27 @@ import javax.persistence.Table;
  * @author Kelvin
  */
 @Entity
-@Table(name = "competicao")
+@Table(name = "AssociarTimeCompeticao")
 public class AssociarTimeCompeticao implements Serializable {
 
     @Id
     @GeneratedValue
     @Column(name = "cod_associar_time_competicao")
-    private Integer cod_associar_time_competicao;
+    private int cod_associar_time_competicao;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "codigo")
+    @JoinColumn(name = "cod_time")
     private Time time;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "codigo")
+    @JoinColumn(name = "cod_competicao")
     private Competicao competicao;
 
-    public Integer getCod_associar_time_competicao() {
+    public int getCod_associar_time_competicao() {
         return cod_associar_time_competicao;
     }
 
-    public void setCod_associar_time_competicao(Integer cod_associar_time_competicao) {
+    public void setCod_associar_time_competicao(int cod_associar_time_competicao) {
         this.cod_associar_time_competicao = cod_associar_time_competicao;
     }
 
@@ -59,4 +59,5 @@ public class AssociarTimeCompeticao implements Serializable {
     public void setCompeticao(Competicao competicao) {
         this.competicao = competicao;
     }
+
 }

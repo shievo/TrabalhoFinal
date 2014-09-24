@@ -1,4 +1,3 @@
-
 package modelo;
 
 import java.io.Serializable;
@@ -14,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.IndexColumn;
@@ -23,51 +23,69 @@ import org.hibernate.annotations.IndexColumn;
  * @author Renan
  */
 @Entity
-@Table(name = "rodada")
+@Table(name = "Rodada")
 public class Rodada implements Serializable {
-    
+
     @Id
     @GeneratedValue
     @Column(name = "cod_rodada")
-     private Integer cod_rodada;
-        
-    @Column(name = "nome",nullable = true)
+    private Integer cod_rodada;
+
+    @Column(name = "nome", nullable = true)
     private String nome;
-    
+
     @Column(name = "data_final_apostas", nullable = true)
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date data_final_apostas;
 
-    @ManyToOne(cascade={CascadeType.ALL})
-    @JoinColumn(name="cod_competicao")
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "cod_competicao")
     @Fetch(FetchMode.JOIN)
-    private List<Competicao> competicao = new ArrayList<Competicao>();
-    
-    @OneToMany(cascade={CascadeType.ALL})
-    @JoinColumn(name="cod_jogo")
+    private Competicao competicao;
+
+    @OneToMany(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "cod_jogo")
     @Fetch(FetchMode.JOIN)
     private List<Jogo> jogos = new ArrayList<Jogo>();
 
-    public void setCod_rodada(Integer codigo) {
-        this.cod_rodada = codigo;
-    }
-    
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public void setData_final_apostas(Date data_final_apostas) {
-        this.data_final_apostas = data_final_apostas;
-    }
-
     public Integer getCod_rodada() {
         return cod_rodada;
+    }
+
+    public void setCod_rodada(Integer cod_rodada) {
+        this.cod_rodada = cod_rodada;
     }
 
     public String getNome() {
         return nome;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public Date getData_final_apostas() {
         return data_final_apostas;
     }
+
+    public void setData_final_apostas(Date data_final_apostas) {
+        this.data_final_apostas = data_final_apostas;
+    }
+
+    public Competicao getCompeticao() {
+        return competicao;
+    }
+
+    public void setCompeticao(Competicao competicao) {
+        this.competicao = competicao;
+    }
+
+    public List<Jogo> getJogos() {
+        return jogos;
+    }
+
+    public void setJogos(List<Jogo> jogos) {
+        this.jogos = jogos;
+    }
+
 }

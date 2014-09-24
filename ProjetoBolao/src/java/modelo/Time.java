@@ -27,32 +27,32 @@ public class Time implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "cod_time")
-    private Integer cod_time;
+    private int cod_time;
     
     @OneToMany(cascade={CascadeType.ALL})
     @JoinColumn(name="cod_time")
     @Fetch(FetchMode.JOIN)
     private List<AssociarTimeCompeticao> associar_time_competicao = new ArrayList<AssociarTimeCompeticao>();
 
-    @Column(name = "nome", length = 50)
+    @Column(name = "nome")
     private String nome;
     
-    @Column(name = "cidade", length = 50, nullable = true)
+    @Column(name = "cidade", nullable = true)
     private String cidade;
     
-    @Column(name = "site", length = 50, nullable = true)
+    @Column(name = "site", nullable = true)
     private String site;
     
-    @Column(name = "email", length = 50, nullable = true)
+    @Column(name = "email", nullable = true)
     private String email;
     
     @Column(name = "historico", length = 100, nullable = true)
     private String historico;
     
-    @Column(name = "fone", length = 50, nullable = true)
+    @Column(name = "fone", nullable = true)
     private String fone;
     
-    @Column(name = "endereco", length = 50, nullable = true)
+    @Column(name = "endereco", nullable = true)
     private String endereco;
     
     @Column(name = "data_fundacao", nullable = true)
@@ -63,29 +63,22 @@ public class Time implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date data_cadastro;
 
-    public Time(int codigo, String nome, String cidade, String site, String email, String historico, String fone, String endereco, Date data_fundacao, Date data_cadastro) {
-        this.nome = nome;
-        this.cidade = cidade;
-        this.site = site;
-        this.email = email;
-        this.historico = historico;
-        this.fone = fone;
-        this.endereco = endereco;
-        this.data_fundacao = data_fundacao;
-        this.data_cadastro = data_cadastro;
-    }
-
-    public Time() {
-    }
-
-    public Integer getCod_time() {
+    public int getCod_time() {
         return cod_time;
     }
 
-    public void setCod_time(Integer cod_time) {
+    public void setCod_time(int cod_time) {
         this.cod_time = cod_time;
     }
-    
+
+    public List<AssociarTimeCompeticao> getAssociar_time_competicao() {
+        return associar_time_competicao;
+    }
+
+    public void setAssociar_time_competicao(List<AssociarTimeCompeticao> associar_time_competicao) {
+        this.associar_time_competicao = associar_time_competicao;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -158,11 +151,4 @@ public class Time implements Serializable {
         this.data_cadastro = data_cadastro;
     }
 
-    public List<AssociarTimeCompeticao> getAssociar_time_competicao() {
-        return associar_time_competicao;
-    }
-
-    public void setAssociar_time_competicao(List<AssociarTimeCompeticao> associar_time_competicao) {
-        this.associar_time_competicao = associar_time_competicao;
-    }
 }

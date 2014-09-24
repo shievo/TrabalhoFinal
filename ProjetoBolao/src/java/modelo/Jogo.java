@@ -7,13 +7,22 @@
 package modelo;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 /**
  *
@@ -21,7 +30,7 @@ import javax.persistence.Temporal;
  */
 
 @Entity
-@Table(name = "jogo")
+@Table(name = "Jogo")
 public class Jogo implements Serializable {
 
     @Id
@@ -29,17 +38,17 @@ public class Jogo implements Serializable {
     @Column(name = "cod_jogo")
     private Integer cod_jogo;
 
-    @Column(name = "time1", length = 150, nullable = true)
-    private String time1;
+    @Column(name = "time1", nullable = true)
+    private Time time1;
     
-    @Column(name = "palcar_time1")
-    private int palcar_time1;
+    @Column(name = "placar_time1")
+    private int placar_time1;
     
-    @Column(name = "time2", length = 150, nullable = true)
-    private String time2;
+    @Column(name = "time2", nullable = true)
+    private Time time2;
     
-    @Column(name = "palcar_time2")
-    private int palcar_time2;
+    @Column(name = "placar_time2")
+    private int placar_time2;
     
     @Column(name = "data_jogo", nullable = true)
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -48,45 +57,14 @@ public class Jogo implements Serializable {
     @Column(name = "vencedor", nullable = true)
     private Time vencedor;
 
-    public void setTime1(String time1) {
-        this.time1 = time1;
-    }
+    @OneToMany(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "cod_aposta")
+    @Fetch(FetchMode.JOIN)
+    private List<Aposta> apostas = new ArrayList<Aposta>();
 
-    public void setPalcar_time1(int palcar_time1) {
-        this.palcar_time1 = palcar_time1;
-    }
-
-    public void setTime2(String time2) {
-        this.time2 = time2;
-    }
-
-    public void setPalcar_time2(int palcar_time2) {
-        this.palcar_time2 = palcar_time2;
-    }
-
-    public void setData_jogo(Date dat_jogo) {
-        this.data_jogo = dat_jogo;
-    }
-
-    public String getTime1() {
-        return time1;
-    }
-
-    public int getPalcar_time1() {
-        return palcar_time1;
-    }
-
-    public String getTime2() {
-        return time2;
-    }
-
-    public int getPalcar_time2() {
-        return palcar_time2;
-    }
-
-    public Date getData_jogo() {
-        return data_jogo;
-    }
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "cod_rodada")
+    private Rodada rodada;
 
     public Integer getCod_jogo() {
         return cod_jogo;
@@ -96,6 +74,46 @@ public class Jogo implements Serializable {
         this.cod_jogo = cod_jogo;
     }
 
+    public Time getTime1() {
+        return time1;
+    }
+
+    public void setTime1(Time time1) {
+        this.time1 = time1;
+    }
+
+    public int getPlacar_time1() {
+        return placar_time1;
+    }
+
+    public void setPlacar_time1(int placar_time1) {
+        this.placar_time1 = placar_time1;
+    }
+
+    public Time getTime2() {
+        return time2;
+    }
+
+    public void setTime2(Time time2) {
+        this.time2 = time2;
+    }
+
+    public int getPlacar_time2() {
+        return placar_time2;
+    }
+
+    public void setPlacar_time2(int placar_time2) {
+        this.placar_time2 = placar_time2;
+    }
+
+    public Date getData_jogo() {
+        return data_jogo;
+    }
+
+    public void setData_jogo(Date data_jogo) {
+        this.data_jogo = data_jogo;
+    }
+
     public Time getVencedor() {
         return vencedor;
     }
@@ -103,4 +121,21 @@ public class Jogo implements Serializable {
     public void setVencedor(Time vencedor) {
         this.vencedor = vencedor;
     }
+
+    public List<Aposta> getApostas() {
+        return apostas;
+    }
+
+    public void setApostas(List<Aposta> apostas) {
+        this.apostas = apostas;
+    }
+
+    public Rodada getRodada() {
+        return rodada;
+    }
+
+    public void setRodada(Rodada rodada) {
+        this.rodada = rodada;
+    }
+
 }

@@ -46,7 +46,7 @@ public class AlterarServlet extends HttpServlet {
             TimeDao timeDao = new TimeDao();
             Time time = new Time();
             int codigo = Integer.valueOf(request.getParameter("codigo"));
-            time.setCodigo(codigo);
+            time.setCod_time(codigo);
             String nome = request.getParameter("nome");
             time.setNome(nome);
             String cidade = request.getParameter("cidade");

@@ -29,7 +29,8 @@ public class Aposta implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date data_aposta;
 
-    @Column(name = "jogo")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "cod_jogo")
     private Jogo jogo;
 
     @Column(name = "placar_time1")
