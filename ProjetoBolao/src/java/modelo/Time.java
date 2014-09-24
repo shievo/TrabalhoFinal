@@ -1,17 +1,24 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "time")
@@ -21,6 +28,11 @@ public class Time implements Serializable {
     @GeneratedValue
     @Column(name = "cod_time")
     private Integer cod_time;
+    
+    @OneToMany(cascade={CascadeType.ALL})
+    @JoinColumn(name="cod_time")
+    @Fetch(FetchMode.JOIN)
+    private List<AssociarTimeCompeticao> associar_time_competicao = new ArrayList<AssociarTimeCompeticao>();
 
     @Column(name = "nome", length = 50)
     private String nome;

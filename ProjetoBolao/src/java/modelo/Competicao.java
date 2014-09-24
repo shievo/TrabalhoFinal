@@ -6,15 +6,21 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 /**
  *
@@ -28,10 +34,11 @@ public class Competicao implements Serializable {
     @GeneratedValue
     @Column(name = "cod_competicao")
     private Integer cod_competicao;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @PrimaryKeyJoinColumn
-    private AssociarTimeCompeticao associar_time_competicao;
+    
+    @OneToMany(cascade={CascadeType.ALL})
+    @JoinColumn(name="cod_categoria")
+    @Fetch(FetchMode.JOIN)
+    private List<AssociarTimeCompeticao> associar_time_competicao = new ArrayList<AssociarTimeCompeticao>();
 
     @Column(name = "nome", length = 50)
     private String nome;
@@ -41,20 +48,20 @@ public class Competicao implements Serializable {
     @Column(name = "data_fim", nullable = true)
     private Date data_fim;
 
+    public List<AssociarTimeCompeticao> getAssociar_time_competicao() {
+        return associar_time_competicao;
+    }
+
+    public void setAssociar_time_competicao(List<AssociarTimeCompeticao> associar_time_competicao) {
+        this.associar_time_competicao = associar_time_competicao;
+    }
+    
     public Integer getCod_competicao() {
         return cod_competicao;
     }
 
     public void setCod_competicao(Integer cod_competicao) {
         this.cod_competicao = cod_competicao;
-    }
-
-    public AssociarTimeCompeticao getAssociar_time_competicao() {
-        return associar_time_competicao;
-    }
-
-    public void setAssociar_time_competicao(AssociarTimeCompeticao associar_time_competicao) {
-        this.associar_time_competicao = associar_time_competicao;
     }
 
     public String getNome() {
