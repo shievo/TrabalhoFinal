@@ -1,6 +1,7 @@
 
 package modelo;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,8 @@ import org.hibernate.annotations.IndexColumn;
  */
 @Entity
 @Table(name = "rodada")
-public class Rodada {
+public class Rodada implements Serializable {
+    
     @Id
     @GeneratedValue
     @Column(name = "cod_rodada")
@@ -43,7 +45,7 @@ public class Rodada {
     @OneToMany(cascade={CascadeType.ALL})
     @JoinColumn(name="cod_jogo")
     @Fetch(FetchMode.JOIN)
-    private List<Jogo> jogo = new ArrayList<Jogo>();
+    private List<Jogo> jogos = new ArrayList<Jogo>();
 
     public void setCodigo(Integer codigo) {
         this.cod_rodada = codigo;
