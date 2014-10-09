@@ -1,7 +1,7 @@
 package modelo;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -17,12 +17,14 @@ import javax.persistence.Temporal;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.IndexColumn;
+import org.hibernate.envers.Audited;
 
 /**
  *
  * @author Renan
  */
 @Entity
+@Audited
 @Table(name = "Rodada")
 public class Rodada implements Serializable {
 

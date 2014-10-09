@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.hibernate.envers.Audited;
 
 
 /**
@@ -20,6 +21,7 @@ import javax.persistence.Table;
  * @author Kelvin
  */
 @Entity
+@Audited
 @Table(name = "AssociarTimeCompeticao")
 public class AssociarTimeCompeticao implements Serializable {
 

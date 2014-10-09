@@ -18,6 +18,13 @@
     <property name="use_sql_comments">true</property>
     -->
     <!-- Mapeando classes -->
+    <mapping class="modelo.AssociarTimeCompeticao"/>
+    <mapping class="modelo.Aposta"/>
+    <mapping class="modelo.Apostador"/>
+    <mapping class="modelo.Competicao"/>
+    <mapping class="modelo.GrupoDeApostadores"/>
+    <mapping class="modelo.Jogo"/>
+    <mapping class="modelo.Rodada"/>
     <mapping class="modelo.Time"/>
   </session-factory>
 </hibernate-configuration>

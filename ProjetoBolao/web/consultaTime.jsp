@@ -85,7 +85,7 @@
             }
             for (Time time : lista) {
                 out.println("<tr>");
-                out.println("<td align='center'>" + time.getCodigo() + "</td>");
+                out.println("<td align='center'>" + time.getCod_time() + "</td>");
                 out.println("<td>" + time.getNome() + "</td>");
                 out.println("<td>" + time.getEndereco() + "</td>");
                 out.println("<td>" + time.getCidade() + "</td>");
@@ -98,7 +98,7 @@
 
                 //link para alteração
                 out.println("<td><form name=\"alterarForm\" action=\"alterarTime.jsp\" method=\"POST\">");
-                out.println("<input type=\"hidden\" name=\"codigo\" id=\"codigo\" value=\"" + time.getCodigo() + "\"/>");
+                out.println("<input type=\"hidden\" name=\"codigo\" id=\"codigo\" value=\"" + time.getCod_time() + "\"/>");
                 out.println("<input type=\"hidden\" name=\"nome\" id=\"nome\" value=\"" + time.getNome() + "\"/>");
                 out.println("<input type=\"hidden\" name=\"endereco\" id=\"endereco\" value=\"" + time.getEndereco() + "\"/>");
                 out.println("<input type=\"hidden\" name=\"cidade\" id=\"cidade\" value=\"" + time.getCidade() + "\"/>");
@@ -113,7 +113,7 @@
                 out.println("</form></td>");
 
                 out.println("<td><form name=\"excluirForm\" action=\"ExcluirTimeServlet\" method=\"POST\">");
-                out.println("<input type=\"hidden\" name=\"codigo\" id=\"codigo\" value=\"" + time.getCodigo() + "\"/>");
+                out.println("<input type=\"hidden\" name=\"codigo\" id=\"codigo\" value=\"" + time.getCod_time() + "\"/>");
                 out.println("<input type=\"submit\" value=\"Excluir >>\" name=\"btServletExcluir\" id=\"btServletExcluir\" />");
                 out.println("</form></td>");
 

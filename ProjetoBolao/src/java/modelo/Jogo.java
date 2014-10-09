@@ -23,6 +23,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.envers.Audited;
 
 /**
  *
@@ -30,6 +31,7 @@ import org.hibernate.annotations.FetchMode;
  */
 
 @Entity
+@Audited
 @Table(name = "Jogo")
 public class Jogo implements Serializable {
 

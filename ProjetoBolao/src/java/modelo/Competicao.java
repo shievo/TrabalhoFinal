@@ -22,12 +22,14 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.envers.Audited;
 
 /**
  *
  * @author Kelvin
  */
 @Entity
+@Audited
 @Table(name = "Competicao")
 public class Competicao implements Serializable {
 

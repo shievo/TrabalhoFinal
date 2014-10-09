@@ -11,8 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import org.hibernate.envers.Audited;
 
 @Entity
+@Audited
 @Table(name = "Aposta")
 public class Aposta implements Serializable {
 

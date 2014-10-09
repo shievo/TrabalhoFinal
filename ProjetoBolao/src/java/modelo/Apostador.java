@@ -17,8 +17,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.envers.Audited;
 
 @Entity
+@Audited
 @Table(name = "Apostador")
 public class Apostador implements Serializable {
 

@@ -83,7 +83,7 @@ public class TimeDao {
 
             switch (filtro) {
                 case 1: //código
-                    consulta = sessao.createQuery("from Time where codigo = :parametro");
+                    consulta = sessao.createQuery("from Time where cod_time = :parametro");
                     consulta.setInteger("parametro", Integer.valueOf(busca));
                     break;
                 case 2: //nome
@@ -122,7 +122,7 @@ public class TimeDao {
 
             switch (filtro) {
                 case 1: //codigo
-                    consulta = sessao.createQuery("from Time where codigo between :busca1 and :busca2  order by codigo asc, data_cadastro desc");
+                    consulta = sessao.createQuery("from Time where cod_time between :busca1 and :busca2  order by codigo asc, data_cadastro desc");
                     consulta.setInteger("busca1", Integer.valueOf(busca1));
                     consulta.setInteger("busca2", Integer.valueOf(busca2));
                     break;
