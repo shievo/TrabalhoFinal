@@ -58,12 +58,12 @@ public class Jogo implements Serializable {
     
     @Column(name = "vencedor", nullable = true)
     private Time vencedor;
-
+/*
     @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "cod_aposta")
     @Fetch(FetchMode.JOIN)
     private List<Aposta> apostas = new ArrayList<Aposta>();
-
+*/
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cod_rodada")
     private Rodada rodada;
@@ -122,14 +122,6 @@ public class Jogo implements Serializable {
 
     public void setVencedor(Time vencedor) {
         this.vencedor = vencedor;
-    }
-
-    public List<Aposta> getApostas() {
-        return apostas;
-    }
-
-    public void setApostas(List<Aposta> apostas) {
-        this.apostas = apostas;
     }
 
     public Rodada getRodada() {

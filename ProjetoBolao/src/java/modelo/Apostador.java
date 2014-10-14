@@ -51,26 +51,18 @@ public class Apostador implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cod_grupo_de_apostadores")
     private GrupoDeApostadores grupo;
-
+/*
     @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "cod_aposta")
     @Fetch(FetchMode.JOIN)
     private List<Aposta> apostas = new ArrayList<Aposta>();
-
+*/
     public Integer getCod_apostador() {
         return cod_apostador;
     }
 
     public void setCod_apostador(Integer cod_apostador) {
         this.cod_apostador = cod_apostador;
-    }
-
-    public List<Aposta> getApostas() {
-        return apostas;
-    }
-
-    public void setApostas(List<Aposta> apostas) {
-        this.apostas = apostas;
     }
 
     public String getNome() {

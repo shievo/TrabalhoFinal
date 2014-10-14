@@ -37,7 +37,7 @@ public class Competicao implements Serializable {
     @GeneratedValue
     @Column(name = "cod_competicao")
     private int cod_competicao;
-    
+    /*
     @OneToMany(cascade={CascadeType.ALL})
     @JoinColumn(name="cod_competicao")
     @Fetch(FetchMode.JOIN)
@@ -47,7 +47,7 @@ public class Competicao implements Serializable {
     @JoinColumn(name="cod_rodada")
     @Fetch(FetchMode.JOIN)
     private List<Rodada> rodadas = new ArrayList<Rodada>();
-
+*/
     @Column(name = "nome")
     private String nome;
 
@@ -65,22 +65,6 @@ public class Competicao implements Serializable {
 
     public void setCod_competicao(int cod_competicao) {
         this.cod_competicao = cod_competicao;
-    }
-
-    public List<AssociarTimeCompeticao> getAssociar_time_competicao() {
-        return associar_time_competicao;
-    }
-
-    public void setAssociar_time_competicao(List<AssociarTimeCompeticao> associar_time_competicao) {
-        this.associar_time_competicao = associar_time_competicao;
-    }
-
-    public List<Rodada> getRodadas() {
-        return rodadas;
-    }
-
-    public void setRodadas(List<Rodada> rodadas) {
-        this.rodadas = rodadas;
     }
 
     public String getNome() {

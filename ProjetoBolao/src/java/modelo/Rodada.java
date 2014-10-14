@@ -44,12 +44,12 @@ public class Rodada implements Serializable {
     @JoinColumn(name = "cod_competicao")
     @Fetch(FetchMode.JOIN)
     private Competicao competicao;
-
+/*
     @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "cod_jogo")
     @Fetch(FetchMode.JOIN)
     private List<Jogo> jogos = new ArrayList<Jogo>();
-
+*/
     public Integer getCod_rodada() {
         return cod_rodada;
     }
@@ -81,13 +81,4 @@ public class Rodada implements Serializable {
     public void setCompeticao(Competicao competicao) {
         this.competicao = competicao;
     }
-
-    public List<Jogo> getJogos() {
-        return jogos;
-    }
-
-    public void setJogos(List<Jogo> jogos) {
-        this.jogos = jogos;
-    }
-
 }

@@ -29,12 +29,12 @@ public class Time implements Serializable {
     @GeneratedValue
     @Column(name = "cod_time")
     private int cod_time;
-    
+    /*
     @OneToMany(cascade={CascadeType.ALL})
     @JoinColumn(name="cod_time")
     @Fetch(FetchMode.JOIN)
     private List<AssociarTimeCompeticao> associar_time_competicao = new ArrayList<AssociarTimeCompeticao>();
-
+*/
     @Column(name = "nome")
     private String nome;
     
@@ -70,14 +70,6 @@ public class Time implements Serializable {
 
     public void setCod_time(int cod_time) {
         this.cod_time = cod_time;
-    }
-
-    public List<AssociarTimeCompeticao> getAssociar_time_competicao() {
-        return associar_time_competicao;
-    }
-
-    public void setAssociar_time_competicao(List<AssociarTimeCompeticao> associar_time_competicao) {
-        this.associar_time_competicao = associar_time_competicao;
     }
 
     public String getNome() {
@@ -151,5 +143,4 @@ public class Time implements Serializable {
     public void setData_cadastro(Date data_cadastro) {
         this.data_cadastro = data_cadastro;
     }
-
 }

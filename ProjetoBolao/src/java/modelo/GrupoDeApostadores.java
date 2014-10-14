@@ -27,26 +27,18 @@ public class GrupoDeApostadores implements Serializable {
 
     @Column(name = "nome", length = 50)
     private String nome;
-
+/*
     @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "cod_apostador")
     @Fetch(FetchMode.JOIN)
     private List<Apostador> apostadores = new ArrayList<Apostador>();
-
+*/
     public int getCod_grupo_de_apostadores() {
         return cod_grupo_de_apostadores;
     }
 
     public void setCod_grupo_de_apostadores(int cod_grupo_de_apostadores) {
         this.cod_grupo_de_apostadores = cod_grupo_de_apostadores;
-    }
-
-    public List<Apostador> getApostadores() {
-        return apostadores;
-    }
-
-    public void setApostadores(List<Apostador> apostadores) {
-        this.apostadores = apostadores;
     }
 
     public String getNome() {
