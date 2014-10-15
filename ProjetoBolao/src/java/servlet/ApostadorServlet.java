@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package servlet;
 
 import dao.ApostadorDao;
+import dao.GrupoDeApostadoresDao;
+import dao.TimeDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Apostador;
 import modelo.GrupoDeApostadores;
+import modelo.Time;
 
 /**
  *
@@ -41,25 +44,44 @@ public class ApostadorServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet GrupoDeApostadoresServlet</title>");            
+            out.println("<title>Servlet GrupoDeApostadoresServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            
+
             Apostador apostador = new Apostador();
-
-            String nomeGrupo = request.getParameter("nomeGrupo");
-            apostador.setNome(nomeGrupo);
-            
             ApostadorDao apostadorDao = new ApostadorDao();
-            apostadorDao.salvar(apostador);
 
-            response.sendRedirect("consultaGrupoDeApostadores.jsp");
+            String nomeApostador = request.getParameter("nomeApostador");
+            apostador.setNome(nomeApostador);
+            
+            String cpf = request.getParameter("cpf");
+            apostador.setCpf(cpf);
+            
+            Date data_nascimento = new Date(request.getParameter("data_nascimento"));
+            apostador.setData_nascimento(data_nascimento);
+            
+            String email = request.getParameter("email");
+            apostador.setEmail(email);
+            
+            String apelido = request.getParameter("apelido");
+            apostador.setApelido(apelido);
+            
+            String time = request.getParameter("time");
+            Time time_preferido = (Time) new TimeDao().buscaTime(1, time);
+            apostador.setTime_preferido(time_preferido);
+            
+            String grupo = request.getParameter("grupo");
+            GrupoDeApostadores grupo_apostadores = (GrupoDeApostadores) new GrupoDeApostadoresDao().buscaGrupoDeApostadores(1, grupo);
+            apostador.setGrupo(grupo_apostadores);
+            
+            apostadorDao.salvar(apostador);
+            
+            response.sendRedirect("consultaApostadores.jsp");
 
             out.println("<h1>Servlet GrupoDeApostadoresServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-            
-            
+
         }
     }
 

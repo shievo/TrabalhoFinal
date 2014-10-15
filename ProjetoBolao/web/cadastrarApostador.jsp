@@ -25,41 +25,37 @@
             <form action="ApostadorServlet">
                 <label for="codigo">Código:</label><br />
                 <input type="text" readonly="true" name="codigo" id ="codigo" value="" size="8" /><br />
-                <label for="nomeGrupo">Nome:</label><br />
+                <label for="nomeApostador">Nome:</label><br />
                 <input type="text" name="nomeApostador" id ="nomeApostador" value="" size="70" /><br />
 
-                <label for="nomeGrupo">CPF:</label><br />
+                <label for="cpf">CPF:</label><br />
                 <input type="text" name="cpf" id ="cpf" value="" size="70" /><br />
 
-                <label for="nomeGrupo">Nascimento:</label><br />
+                <label for="data_nascimento">Nascimento:</label><br />
                 <input type="text" name="data_nascimento" id ="data_nascimento" value="" size="70" /><br />
 
-                <label for="nomeGrupo">E-mail:</label><br />
+                <label for="email">E-mail:</label><br />
                 <input type="text" name="email" id ="email" value="" size="70" /><br />
 
-                <label for="nomeGrupo">Apelido:</label><br />
+                <label for="apelido">Apelido:</label><br />
                 <input type="text" name="apelido" id ="apelido" value="" size="70" /><br />
 
-
-                <label for="nomeGrupo">Apelido:</label><br />
-                <input type="text" name="apelido" id ="apelido" value="" size="70" /><br />
-
-                <label for="nomeGrupo">Time favorito:</label><br />
+                <label for="timeFavorito">Time favorito:</label><br />
                 <select name="timeFavorito">
                     <%
                         TimeDao timeDao = new TimeDao();
                         for (Time time : timeDao.listar()) {
-                            out.print("<option>" + time.getCod_time() + " - " + time.getNome() + "</option>");
+                            out.print("<option value=\"" + time.getCod_time() + "\">" + time.getNome() + "</option>");
                         }
                     %>
                 </select>
 
-                <label for="nomeGrupo">Grupo de apostadores:</label><br />
-                <select name="timeFavorito">
+                <label for="grupo">Grupo de apostadores:</label><br />
+                <select name="grupo">
                     <%
                         GrupoDeApostadoresDao grupoDeApostadoresDao = new GrupoDeApostadoresDao();
                         for (GrupoDeApostadores grupoDeApostadores : grupoDeApostadoresDao.listar()) {
-                            out.print("<option>" + grupoDeApostadores.getCod_grupo_de_apostadores() + " - " + grupoDeApostadores.getNome() + "</option>");
+                            out.print("<option value=\"" + grupoDeApostadores.getCod_grupo_de_apostadores() + "\">" + grupoDeApostadores.getNome() + "</option>");
                         }
                     %>
                 </select>
