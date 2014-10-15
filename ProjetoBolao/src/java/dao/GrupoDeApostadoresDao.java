@@ -109,5 +109,30 @@ public class GrupoDeApostadoresDao {
         }
         return lista;
     }
-    
+
+    public GrupoDeApostadores buscaGrupoDeApostadoresUniqueResult(int cod_grupo) {
+        Session sessao = null;
+        Transaction transacao = null;
+        Query consulta = null;
+
+        GrupoDeApostadores grupo = new GrupoDeApostadores();
+        try {
+            sessao = Hibernate4Util_UnicaSessao.getSessionFactory();
+            transacao = sessao.beginTransaction();
+
+            consulta = sessao.createQuery("from GrupoDeApostadores where cod_grupoDeApostadores = :parametro");
+            consulta.setInteger("parametro", cod_grupo);
+
+            try {
+                grupo = (GrupoDeApostadores) consulta.uniqueResult();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            transacao.commit();
+            return grupo;
+        } catch (HibernateException e) {
+            System.out.println("Não foi possível buscar Grupo De Apostadores. Erro: " + e.getMessage());
+        }
+        return grupo;
+    }
 }
