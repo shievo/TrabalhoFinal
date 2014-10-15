@@ -45,13 +45,13 @@ public class Apostador implements Serializable {
     @Column(name = "apelido")
     private String apelido;
 
-    @Column(name = "time_preferido")
-    private Time time_preferido;
+    @Column(name = "cod_time_preferido")
+    private Integer cod_time_preferido;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cod_grupo_de_apostadores")
     private GrupoDeApostadores grupo;
-    
+
     public Integer getCod_apostador() {
         return cod_apostador;
     }
@@ -100,14 +100,6 @@ public class Apostador implements Serializable {
         this.apelido = apelido;
     }
 
-    public Time getTime_preferido() {
-        return time_preferido;
-    }
-
-    public void setTime_preferido(Time time_preferido) {
-        this.time_preferido = time_preferido;
-    }
-
     public GrupoDeApostadores getGrupo() {
         return grupo;
     }
@@ -116,4 +108,11 @@ public class Apostador implements Serializable {
         this.grupo = grupo;
     }
 
+    public Integer getCod_time_preferido() {
+        return cod_time_preferido;
+    }
+
+    public void setCod_time_preferido(Integer cod_time_preferido) {
+        this.cod_time_preferido = cod_time_preferido;
+    }
 }
