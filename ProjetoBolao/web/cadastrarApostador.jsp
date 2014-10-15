@@ -40,8 +40,8 @@
                 <label for="apelido">Apelido:</label><br />
                 <input type="text" name="apelido" id ="apelido" value="" size="70" /><br />
 
-                <label for="timeFavorito">Time favorito:</label><br />
-                <select name="timeFavorito">
+                <label for="time">Time favorito:</label><br />
+                <select name="time">
                     <%
                         TimeDao timeDao = new TimeDao();
                         for (Time time : timeDao.listar()) {

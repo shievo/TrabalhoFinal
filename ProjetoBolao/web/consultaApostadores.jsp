@@ -4,6 +4,8 @@
     Author     : WelentonA
 --%>
 
+<%@page import="dao.TimeDao"%>
+<%@page import="modelo.Time"%>
 <%@page import="modelo.Apostador"%>
 <%@page import="java.util.List"%>
 <%@page import="dao.ApostadorDao"%>
@@ -45,14 +47,14 @@
                 out.println("<td>" + apostador.getData_nascimento() + "</td>");
                 out.println("<td>" + apostador.getEmail() + "</td>");
                 out.println("<td>" + apostador.getApelido() + "</td>");
-                out.println("<td>" + apostador.getTime_preferido().getNome() + "</td>");
+                out.println("<td>" + new TimeDao().buscaTime(1, String.valueOf(apostador.getCod_time_preferido())) + "</td>");
                 out.println("<td>" + apostador.getGrupo().getNome() + "</td>");
-                
+
                 //link para alteração
                 out.println("<td><form name=\"alterarForm\" action=\"alterarGrupoDeApostadores.jsp\" method=\"POST\">");
                 out.println("<input type=\"hidden\" name=\"codigo\" id=\"codigo\" value=\"" + apostador.getCod_apostador() + "\"/>");
                 out.println("<input type=\"hidden\" name=\"nome\" id=\"nome\" value=\"" + apostador.getNome() + "\"/>");
-                
+
                 out.println("<input type=\"submit\" value=\"Alterar\" name=\"btAlterar\" id=\"btAlterar\" />");
                 out.println("</form></td>");
 
