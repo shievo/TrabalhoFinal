@@ -4,6 +4,7 @@
     Author     : WelentonA
 --%>
 
+<%@page import="dao.GrupoDeApostadoresDao"%>
 <%@page import="modelo.GrupoDeApostadores"%>
 <%@page import="java.util.List"%>
 
@@ -28,8 +29,8 @@
             out.println("</tr>");
             out.println("</thead>");
 
-            GrupoDeApostadoresDao grupoDeApostadoresDao = new GrupoDeApostadores();
-            List<GrupoDeApostadores> lista = null;
+            GrupoDeApostadoresDao grupoDeApostadoresDao = new GrupoDeApostadoresDao();
+            List<GrupoDeApostadores> lista = grupoDeApostadoresDao.listar();
 
             for (GrupoDeApostadores grupoDeApostadores : lista) {
                 out.println("<tr>");
@@ -37,7 +38,7 @@
                 out.println("<td>" + grupoDeApostadores.getNome() + "</td>");
                 
                 //link para alteração
-                out.println("<td><form name=\"alterarForm\" action=\"alterarTime.jsp\" method=\"POST\">");
+                out.println("<td><form name=\"alterarForm\" action=\"alterarGrupoDeApostadores.jsp\" method=\"POST\">");
                 out.println("<input type=\"hidden\" name=\"codigo\" id=\"codigo\" value=\"" + grupoDeApostadores.getCod_grupo_de_apostadores() + "\"/>");
                 out.println("<input type=\"hidden\" name=\"nome\" id=\"nome\" value=\"" + grupoDeApostadores.getNome() + "\"/>");
                 
