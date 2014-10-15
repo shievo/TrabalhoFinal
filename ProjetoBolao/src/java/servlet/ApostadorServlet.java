@@ -6,6 +6,7 @@
 
 package servlet;
 
+import dao.ApostadorDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -47,9 +48,9 @@ public class ApostadorServlet extends HttpServlet {
             Apostador apostador = new Apostador();
 
             String nomeGrupo = request.getParameter("nomeGrupo");
-            grupoDeApostadores.setNome(nomeGrupo);
+            apostador.setNome(nomeGrupo);
             
-            ApostadoDao apostadorDao = new ApostadorDao();
+            ApostadorDao apostadorDao = new ApostadorDao();
             apostadorDao.salvar(apostador);
 
             response.sendRedirect("consultaGrupoDeApostadores.jsp");
