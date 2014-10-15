@@ -10,7 +10,7 @@ import dao.GrupoDeApostadoresDao;
 import dao.TimeDao;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
+import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -53,29 +53,28 @@ public class ApostadorServlet extends HttpServlet {
 
             String nomeApostador = request.getParameter("nomeApostador");
             apostador.setNome(nomeApostador);
-            
+
             String cpf = request.getParameter("cpf");
             apostador.setCpf(cpf);
-            
-            Date data_nascimento = new Date(request.getParameter("data_nascimento"));
+
+            Date data_nascimento = Date.valueOf(request.getParameter("data_nascimento"));
             apostador.setData_nascimento(data_nascimento);
-            
+
             String email = request.getParameter("email");
             apostador.setEmail(email);
-            
+
             String apelido = request.getParameter("apelido");
             apostador.setApelido(apelido);
-            
-            String time = request.getParameter("time");
-            Time time_preferido = (Time) new TimeDao().buscaTime(1, time);
-            apostador.setTime_preferido(time_preferido);
-            
-            String grupo = request.getParameter("grupo");
-            GrupoDeApostadores grupo_apostadores = (GrupoDeApostadores) new GrupoDeApostadoresDao().buscaGrupoDeApostadores(1, grupo);
+
+            Integer time = Integer.valueOf(request.getParameter("time"));
+            apostador.setCod_time_preferido(time);
+
+            Integer grupo = Integer.valueOf(request.getParameter("grupo"));
+            GrupoDeApostadores grupo_apostadores = new GrupoDeApostadoresDao().buscaGrupoDeApostadoresUniqueResult(grupo);
             apostador.setGrupo(grupo_apostadores);
-            
+
             apostadorDao.salvar(apostador);
-            
+
             response.sendRedirect("consultaApostadores.jsp");
 
             out.println("<h1>Servlet GrupoDeApostadoresServlet at " + request.getContextPath() + "</h1>");
