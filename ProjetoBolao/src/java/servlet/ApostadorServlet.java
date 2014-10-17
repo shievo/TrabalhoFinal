@@ -65,13 +65,13 @@ public class ApostadorServlet extends HttpServlet {
 
             String apelido = request.getParameter("apelido");
             apostador.setApelido(apelido);
-
-            Integer time = Integer.valueOf(request.getParameter("time"));
-            apostador.setCod_time_preferido(time);
-
+            
             Integer grupo = Integer.valueOf(request.getParameter("grupo"));
-            GrupoDeApostadores grupo_apostadores = new GrupoDeApostadoresDao().buscaGrupoDeApostadoresUniqueResult(grupo);
-            apostador.setGrupo(grupo_apostadores);
+            apostador.setGrupo(new GrupoDeApostadoresDao().buscaGrupoDeApostadoresUniqueResult(grupo));
+            
+            
+            Integer cod_time = Integer.valueOf(request.getParameter("time"));
+            apostador.setTime_preferido(new TimeDao().buscaTimeUniqueResult(cod_time));
 
             apostadorDao.salvar(apostador);
 

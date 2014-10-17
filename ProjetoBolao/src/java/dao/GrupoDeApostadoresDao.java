@@ -120,7 +120,7 @@ public class GrupoDeApostadoresDao {
             sessao = Hibernate4Util_UnicaSessao.getSessionFactory();
             transacao = sessao.beginTransaction();
 
-            consulta = sessao.createQuery("from GrupoDeApostadores where cod_grupoDeApostadores = :parametro");
+            consulta = sessao.createQuery("from GrupoDeApostadores where cod_grupo_de_apostadores = :parametro");
             consulta.setInteger("parametro", cod_grupo);
 
             try {

@@ -151,4 +151,32 @@ public class TimeDao {
         }
         return lista;
     }
+
+    public Time buscaTimeUniqueResult(int cod_time) {
+        Session sessao = null;
+        Transaction transacao = null;
+        Query consulta = null;
+
+        Time time = null;
+        try {
+            sessao = Hibernate4Util_UnicaSessao.getSessionFactory();
+            transacao = sessao.beginTransaction();
+
+            consulta = sessao.createQuery("from Time where cod_time = :parametro");
+            consulta.setInteger("parametro", cod_time);
+
+            try {
+                time = (Time) consulta.uniqueResult();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+
+            transacao.commit();
+            return time;
+        } catch (HibernateException e) {
+            System.out.println("Não foi possível buscar contato. Erro: " + e.getMessage());
+            return time;
+        }
+    }
+
 }
