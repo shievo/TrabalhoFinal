@@ -69,13 +69,13 @@ public class AlterarApostadorServlet extends HttpServlet {
             TimeDao timeDao = new TimeDao();
             Time time = timeDao.buscaTimeUniqueResult(cod_time);
             apostador.setTime_preferido(time);
-            
+            /*
             Integer cod_grupo_de_apostadores = Integer.valueOf(request.getParameter("cod_grupo_de_apostadores"));
             GrupoDeApostadoresDao grupoDao = new GrupoDeApostadoresDao();
             GrupoDeApostadores grupo = new GrupoDeApostadores();
             grupoDao.buscaGrupoDeApostadoresUniqueResult(cod_grupo_de_apostadores);
             apostador.setGrupo(grupo);
-            
+            */
             apostadorDao.atualizar(apostador);
 
             out.println("<h1>Servlet AlterarApostadorServlet at " + request.getContextPath() + "</h1>");
