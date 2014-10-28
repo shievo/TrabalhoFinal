@@ -51,9 +51,15 @@
                 out.println("<td>" + apostador.getGrupo().getNome() + "</td>");
 
                 //link para alteração
-                out.println("<td><form name=\"alterarForm\" action=\"alterarGrupoDeApostadores.jsp\" method=\"POST\">");
+                out.println("<td><form name=\"alterarForm\" action=\"alterarApostador.jsp\" method=\"POST\">");
                 out.println("<input type=\"hidden\" name=\"codigo\" id=\"codigo\" value=\"" + apostador.getCod_apostador() + "\"/>");
                 out.println("<input type=\"hidden\" name=\"nome\" id=\"nome\" value=\"" + apostador.getNome() + "\"/>");
+                out.println("<input type=\"hidden\" name=\"cpf\"  value=\"" + apostador.getCpf() + "\"/>");
+                out.println("<input type=\"hidden\" name=\"data_nascimento\" value=\"" + apostador.getData_nascimento() + "\"/>");
+                out.println("<input type=\"hidden\" name=\"email\" value=\"" + apostador.getEmail() + "\"/>");
+                out.println("<input type=\"hidden\" name=\"apelido\" value=\"" + apostador.getApelido() + "\"/>");
+                out.println("<input type=\"hidden\" name=\"cod_time\" value=\"" + apostador.getTime_preferido().getCod_time() + "\"/>");
+                out.println("<input type=\"hidden\" name=\"cod_grupo_de_apostadores\" value=\"" + apostador.getGrupo().getCod_grupo_de_apostadores() + "\"/>");
 
                 out.println("<input type=\"submit\" value=\"Alterar\" name=\"btAlterar\" id=\"btAlterar\" />");
                 out.println("</form></td>");

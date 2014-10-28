@@ -16,11 +16,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="bootstrap.css" />
-        <title>Cadastro de Grupo de Apostadores</title>
+        <title>Cadastro de Apostador</title>
     </head>
     <body>
         <a href="index.html">Voltar</a> <br />
-        <h1>Cadastro de Grupo de Apostadores</h1>
+        <h1>Cadastro de Apostador</h1>
         <fieldset>
             <form action="ApostadorServlet">
                 <label for="codigo">Código:</label><br />
