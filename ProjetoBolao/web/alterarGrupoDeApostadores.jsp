@@ -16,7 +16,7 @@
         <a href="index.html">Voltar</a> <br />
         <h1>Alterar Grupo de Apostadores</h1>
         <fieldset>
-            <form action="AlterarServlet" name="form">
+            <form action="AlterarGrupoDeApostadoresServlet" name="form">
                 <label for="codigo">Código:</label><br />
                 <%
                     out.println("<input type=\"text\" readonly=\"true\" name=\"codigo\" id =\"codigo\" value=\"" + request.getParameter("codigo") + "\" size=\"8\" /><br />");
