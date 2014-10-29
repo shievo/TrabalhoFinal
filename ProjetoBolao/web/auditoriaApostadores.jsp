@@ -17,6 +17,7 @@
     </head>
     <body>
         <br><a href="index.html">Início</a>
+        <h1>Consulta de auditoria de Apostadores</h1>
         
         <%
             out.println("<table border=2px cellpadding=5px cellspacing=0>");
@@ -33,7 +34,7 @@
             String sql = "select case when aud.revtype = 0 then \'Inclusão\' when aud.revtype = 1 then \'Alteração\' "
                     + "else \'Exclusão\' end as tipoRevisao, "
                     + "aud.cod_time, aud.nome, inf.REVTSTMP "
-                    + "from app.APOSTADOR_AUD aud "
+                    + "from app.TIME_AUD aud "
                     + "inner join app.REVINFO inf on (aud.REV = inf.REV)";
             ResultSet rs = c.getConexao().prepareStatement(sql).executeQuery();
 

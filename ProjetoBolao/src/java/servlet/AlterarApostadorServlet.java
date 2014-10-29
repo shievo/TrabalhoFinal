@@ -67,18 +67,17 @@ public class AlterarApostadorServlet extends HttpServlet {
             
             Integer cod_time = Integer.valueOf(request.getParameter("cod_time"));
             TimeDao timeDao = new TimeDao();
-            Time time = timeDao.buscaTimeUniqueResult(cod_time);
-            apostador.setTime_preferido(time);
-            /*
+            apostador.setTime_preferido(timeDao.buscaTimeUniqueResult(cod_time));
+            
+            
             Integer cod_grupo_de_apostadores = Integer.valueOf(request.getParameter("cod_grupo_de_apostadores"));
             GrupoDeApostadoresDao grupoDao = new GrupoDeApostadoresDao();
-            GrupoDeApostadores grupo = new GrupoDeApostadores();
-            grupoDao.buscaGrupoDeApostadoresUniqueResult(cod_grupo_de_apostadores);
-            apostador.setGrupo(grupo);
-            */
+            apostador.setGrupo(grupoDao.buscaGrupoDeApostadoresUniqueResult(cod_grupo_de_apostadores));
+            
             apostadorDao.atualizar(apostador);
-
-            out.println("<h1>Servlet AlterarApostadorServlet at " + request.getContextPath() + "</h1>");
+             response.sendRedirect("consultaApostadores.jsp");
+                     
+                
             out.println("</body>");
             out.println("</html>");
         }
