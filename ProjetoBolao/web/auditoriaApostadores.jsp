@@ -34,7 +34,7 @@
             String sql = "select case when aud.revtype = 0 then \'Inclusão\' when aud.revtype = 1 then \'Alteração\' "
                     + "else \'Exclusão\' end as tipoRevisao, "
                     + "aud.cod_time, aud.nome, inf.REVTSTMP "
-                    + "from app.TIME_AUD aud "
+                    + "from app.APOSTADOR_AUD aud "
                     + "inner join app.REVINFO inf on (aud.REV = inf.REV)";
             ResultSet rs = c.getConexao().prepareStatement(sql).executeQuery();
 
