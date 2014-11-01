@@ -47,7 +47,7 @@
                 out.println("<td>" + apostador.getData_nascimento() + "</td>");
                 out.println("<td>" + apostador.getEmail() + "</td>");
                 out.println("<td>" + apostador.getApelido() + "</td>");
-                out.println("<td>" + new TimeDao().buscaTimeUniqueResult(apostador.getTime_preferido().getCod_time()) + "</td>");
+                out.println("<td>" + apostador.getTime_preferido().getNome() + "</td>");
                 out.println("<td>" + apostador.getGrupo().getNome() + "</td>");
 
                 //link para alteração
