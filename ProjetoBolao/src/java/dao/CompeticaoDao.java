@@ -71,7 +71,7 @@ public class CompeticaoDao {
         }
     }
 
-    public List<Competicao> buscaApostador(int filtro, String busca) {
+    public List<Competicao> buscaCompeticao(int filtro, String busca) {
         Session sessao = null;
         Transaction transacao = null;
         Query consulta = null;
@@ -106,4 +106,29 @@ public class CompeticaoDao {
         return lista;
     }
     
+    public Competicao buscaCompeticaoUniqueResult(int cod_competicao) {
+        Session sessao = null;
+        Transaction transacao = null;
+        Query consulta = null;
+
+        Competicao competicao = new Competicao();
+        try {
+            sessao = Hibernate4Util_UnicaSessao.getSessionFactory();
+            transacao = sessao.beginTransaction();
+
+            consulta = sessao.createQuery("from Competicao where cod_competicao = :parametro");
+            consulta.setInteger("parametro", cod_competicao);
+
+            try {
+                competicao = (Competicao) consulta.uniqueResult();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            transacao.commit();
+            return competicao;
+        } catch (HibernateException e) {
+            System.out.println("Não foi possível buscar Grupo De Apostadores. Erro: " + e.getMessage());
+        }
+        return competicao;
+    }
 }
