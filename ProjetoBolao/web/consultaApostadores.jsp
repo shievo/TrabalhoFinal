@@ -64,7 +64,7 @@
                 out.println("<input type=\"submit\" value=\"Alterar\" name=\"btAlterar\" id=\"btAlterar\" />");
                 out.println("</form></td>");
 
-                out.println("<td><form name=\"excluirForm\" action=\"ExcluirApostador\" method=\"POST\">");
+                out.println("<td><form name=\"excluirForm\" action=\"ExcluirApostadorServlet\" method=\"POST\">");
                 out.println("<input type=\"hidden\" name=\"codigo\" id=\"codigo\" value=\"" + apostador.getCod_apostador() + "\"/>");
                 out.println("<input type=\"submit\" value=\"Excluir >>\" name=\"btServletExcluir\" id=\"btServletExcluir\" />");
                 out.println("</form></td>");
