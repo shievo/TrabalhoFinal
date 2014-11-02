@@ -90,7 +90,7 @@ public class RodadaDao {
                     consulta = sessao.createQuery("from Rodada where rodada LIKE :parametro order by rodada asc, codigo asc");
                     consulta.setString("parametro", "%" + busca + "%");
                     break;
-                }
+            }
 
             try {
                 lista = consulta.list();
@@ -105,5 +105,30 @@ public class RodadaDao {
         }
         return lista;
     }
-    
+
+    public Rodada buscaRodadaUniqueResult(int cod_rodada) {
+        Session sessao = null;
+        Transaction transacao = null;
+        Query consulta = null;
+
+        Rodada rodada = new Rodada();
+        try {
+            sessao = Hibernate4Util_UnicaSessao.getSessionFactory();
+            transacao = sessao.beginTransaction();
+
+            consulta = sessao.createQuery("from Rodada where cod_rodada = :parametro");
+            consulta.setInteger("parametro", cod_rodada);
+
+            try {
+                rodada = (Rodada) consulta.uniqueResult();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            transacao.commit();
+            return rodada;
+        } catch (HibernateException e) {
+            System.out.println("Não foi possível buscar a Rodada. Erro: " + e.getMessage());
+        }
+        return rodada;
+    }
 }
