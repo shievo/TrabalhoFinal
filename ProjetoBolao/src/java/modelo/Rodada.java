@@ -40,9 +40,9 @@ public class Rodada implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date data_final_apostas;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     @JoinColumn(name = "cod_competicao")
-    @Fetch(FetchMode.JOIN)
+    @Fetch(FetchMode.SELECT) //tava JOIN, não excluía!
     private Competicao competicao;
 /*
     @OneToMany(cascade = {CascadeType.ALL})
