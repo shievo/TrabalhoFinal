@@ -106,4 +106,29 @@ public class AssociarTimeCompeticaoDao {
         return lista;
     }
     
+    public AssociarTimeCompeticao buscaAssociarTimeCompeticaoUniqueResult(int cod) {
+        Session sessao = null;
+        Transaction transacao = null;
+        Query consulta = null;
+
+        AssociarTimeCompeticao associarTimeCompeticao = new AssociarTimeCompeticao();
+        try {
+            sessao = Hibernate4Util_UnicaSessao.getSessionFactory();
+            transacao = sessao.beginTransaction();
+
+            consulta = sessao.createQuery("from AssociarTimeCompeticao where cod_associar_time_competicao = :parametro");
+            consulta.setInteger("parametro", cod);
+
+            try {
+                associarTimeCompeticao = (AssociarTimeCompeticao) consulta.uniqueResult();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            transacao.commit();
+            return associarTimeCompeticao;
+        } catch (HibernateException e) {
+            System.out.println("Não foi possível buscar Grupo De Apostadores. Erro: " + e.getMessage());
+        }
+        return associarTimeCompeticao;
+    }
 }
