@@ -40,19 +40,19 @@ public class Jogo implements Serializable {
     @Column(name = "cod_jogo")
     private Integer cod_jogo;
 
-    @Column(name = "time1", nullable = true)
+    @Column(name = "time1")
     private Time time1;
     
-    @Column(name = "placar_time1")
+    @Column(name = "placar_time1", nullable = true)
     private int placar_time1;
     
-    @Column(name = "time2", nullable = true)
+    @Column(name = "time2")
     private Time time2;
     
-    @Column(name = "placar_time2")
+    @Column(name = "placar_time2", nullable = true)
     private int placar_time2;
     
-    @Column(name = "data_jogo", nullable = true)
+    @Column(name = "data_jogo")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date data_jogo;
     

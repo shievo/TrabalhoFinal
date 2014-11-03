@@ -61,7 +61,26 @@ public class JogoDao {
         try {
             sessao = Hibernate4Util_UnicaSessao.getSessionFactory();
             transacao = sessao.beginTransaction();
-            consulta = sessao.createQuery("from Jogo");
+            consulta = sessao.createQuery("from Jogo where vencedor = null");
+            resultado = consulta.list();
+            transacao.commit();
+            return resultado;
+        } catch (HibernateException e) {
+            System.out.println("Não foi possível selecionar Jogo. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        }
+    }
+
+    public List<Jogo> listarFinalizados() {
+        Session sessao = null;
+        Transaction transacao = null;
+        Query consulta = null;
+        List<Jogo> resultado = null;
+
+        try {
+            sessao = Hibernate4Util_UnicaSessao.getSessionFactory();
+            transacao = sessao.beginTransaction();
+            consulta = sessao.createQuery("from Jogo where vencedor != null");
             resultado = consulta.list();
             transacao.commit();
             return resultado;
@@ -90,7 +109,7 @@ public class JogoDao {
                     consulta = sessao.createQuery("from Jogo where nome LIKE :parametro order by nome asc, codigo asc");
                     consulta.setString("parametro", "%" + busca + "%");
                     break;
-              }
+            }
 
             try {
                 lista = consulta.list();
@@ -105,5 +124,30 @@ public class JogoDao {
         }
         return lista;
     }
-    
+
+    public Jogo buscaJogoUniqueResult(int cod_jogo) {
+        Session sessao = null;
+        Transaction transacao = null;
+        Query consulta = null;
+
+        Jogo jogo = new Jogo();
+        try {
+            sessao = Hibernate4Util_UnicaSessao.getSessionFactory();
+            transacao = sessao.beginTransaction();
+
+            consulta = sessao.createQuery("from Jogo where cod_jogo = :parametro");
+            consulta.setInteger("parametro", cod_jogo);
+
+            try {
+                jogo = (Jogo) consulta.uniqueResult();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            transacao.commit();
+            return jogo;
+        } catch (HibernateException e) {
+            System.out.println("Não foi possível buscar Jogo. Erro: " + e.getMessage());
+        }
+        return jogo;
+    }
 }
