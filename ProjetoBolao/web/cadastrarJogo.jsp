@@ -44,8 +44,6 @@
                         }
                     %>
                 </select><br>
-                <label for="placar1">Placar Time 1:</label>
-                <input type="text" name="placar1" value="" size="10" /><br /><br>
 
                 <label for="time2">Time 2:</label>
                 <select name="time2">
@@ -59,9 +57,7 @@
                         }
                     %>
                 </select><br>
-                <label for="placar2">Placar Time 2:</label>
-                <input type="text" name="placar2" value="" size="10" /><br /><br>
-
+                
                 <label for="data_jogo">Data do jogo:</label><br />
                 <input type="text" name="data_jogo" value="" size="30" /><br />
 
