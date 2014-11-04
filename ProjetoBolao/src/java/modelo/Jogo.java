@@ -40,13 +40,15 @@ public class Jogo implements Serializable {
     @Column(name = "cod_jogo")
     private Integer cod_jogo;
 
-    @Column(name = "time1")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "cod_time1")
     private Time time1;
     
     @Column(name = "placar_time1", nullable = true)
     private int placar_time1;
     
-    @Column(name = "time2")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "cod_time2")
     private Time time2;
     
     @Column(name = "placar_time2", nullable = true)
