@@ -54,6 +54,7 @@ public class JogoServlet extends HttpServlet {
             jogo.setTime1(new TimeDao().buscaTimeUniqueResult(Integer.valueOf(request.getParameter("time1"))));
             jogo.setTime2(new TimeDao().buscaTimeUniqueResult(Integer.valueOf(request.getParameter("time2"))));
             jogo.setData_jogo(Date.valueOf(request.getParameter("data_jogo")));
+            jogo.setFinalizada('f');
             
             new JogoDao().salvar(jogo);
             

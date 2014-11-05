@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package modelo;
 
 import java.io.Serializable;
@@ -29,7 +28,6 @@ import org.hibernate.envers.Audited;
  *
  * @author Renan
  */
-
 @Entity
 @Audited
 @Table(name = "Jogo")
@@ -43,32 +41,39 @@ public class Jogo implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cod_time1")
     private Time time1;
-    
+
     @Column(name = "placar_time1", nullable = true)
     private int placar_time1;
-    
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cod_time2")
     private Time time2;
-    
+
     @Column(name = "placar_time2", nullable = true)
     private int placar_time2;
-    
+
     @Column(name = "data_jogo")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date data_jogo;
-    
-    @Column(name = "vencedor", nullable = true)
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "cod_vencedor")
     private Time vencedor;
-/*
-    @OneToMany(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "cod_aposta")
-    @Fetch(FetchMode.JOIN)
-    private List<Aposta> apostas = new ArrayList<Aposta>();
-*/
+    
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cod_rodada")
     private Rodada rodada;
+
+    @Column(name = "finalizada")
+    private char finalizada;
+
+    public char getFinalizada() {
+        return finalizada;
+    }
+
+    public void setFinalizada(char finalizada) {
+        this.finalizada = finalizada;
+    }
 
     public Integer getCod_jogo() {
         return cod_jogo;
@@ -118,12 +123,18 @@ public class Jogo implements Serializable {
         this.data_jogo = data_jogo;
     }
 
-    public Time getVencedor() {
-        return vencedor;
+    public void setVencedor() {
+        vencedor = null;
+        if (this.placar_time1 > this.placar_time2) {
+            this.vencedor = time1;
+        }
+        if (this.placar_time1 < this.placar_time2) {
+            this.vencedor = time2;
+        }
     }
 
-    public void setVencedor(Time vencedor) {
-        this.vencedor = vencedor;
+    public Time getVencedor() {
+        return vencedor;
     }
 
     public Rodada getRodada() {

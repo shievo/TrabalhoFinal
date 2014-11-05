@@ -61,7 +61,7 @@ public class JogoDao {
         try {
             sessao = Hibernate4Util_UnicaSessao.getSessionFactory();
             transacao = sessao.beginTransaction();
-            consulta = sessao.createQuery("from Jogo where vencedor = null");
+            consulta = sessao.createQuery("from Jogo where finalizada = 'f'");
             resultado = consulta.list();
             transacao.commit();
             return resultado;
@@ -80,7 +80,7 @@ public class JogoDao {
         try {
             sessao = Hibernate4Util_UnicaSessao.getSessionFactory();
             transacao = sessao.beginTransaction();
-            consulta = sessao.createQuery("from Jogo where vencedor != null");
+            consulta = sessao.createQuery("from Jogo where finalizada = 't'");
             resultado = consulta.list();
             transacao.commit();
             return resultado;

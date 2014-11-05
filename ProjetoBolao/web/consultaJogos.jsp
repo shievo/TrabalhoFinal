@@ -40,7 +40,7 @@
                 out.println("<td>" + jogo.getData_jogo() + "</td>");
 
                 out.println("<td><form name=\"placarForm\" action=\"placarJogo.jsp\" method=\"POST\">");
-                out.println("<input type=\"hidden\" name=\"codigo_jogo\" value=\"" + jogo.getCod_jogo() + "\"/>");
+                out.println("<input type=\"hidden\" name=\"codigo\" value=\"" + jogo.getCod_jogo() + "\"/>");
 
                 out.println("<input type=\"submit\" value=\"Placar\" name=\"btAlterar\" id=\"btAlterar\" />");
                 out.println("</form></td>");

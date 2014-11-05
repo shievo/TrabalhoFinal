@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Jogo;
+import modelo.Time;
 
 /**
  *
@@ -50,9 +51,10 @@ public class JogoPlacarServlet extends HttpServlet {
             jogo.setPlacar_time1(Integer.valueOf(request.getParameter("placar1")));
             jogo.setPlacar_time2(Integer.valueOf(request.getParameter("placar2")));
             
+            jogo.setVencedor();
+            jogo.setFinalizada('t');
             /*
             ATUALIZAR A QUANTIDADE DE PONTOS DOS APOSTADORES!!!
-            Setar o ganhador
             */
             jogoDao.atualizar(jogo);
 
