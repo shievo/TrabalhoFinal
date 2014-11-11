@@ -77,7 +77,11 @@
                 out.println("<td>" + jogo.getTime2().getNome() + "</td>");
                 out.println("<td>" + jogo.getData_jogo() + "</td>");
                 out.println("<td>" + jogo.getPlacar_time1() + " x " + jogo.getPlacar_time2() + "</td>");
-                out.println("<td>" + jogo.getVencedor().getNome() + "</td>");
+                if(jogo.getVencedor() != null){
+                    out.println("<td>" + jogo.getVencedor().getNome() + "</td>");
+                }else{
+                    out.println("<td>Empate</td>");
+                }
                 out.println("</tr>");
             }
             out.println("</tbody>");
