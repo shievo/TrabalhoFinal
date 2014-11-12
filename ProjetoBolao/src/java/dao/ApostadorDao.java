@@ -135,4 +135,31 @@ public class ApostadorDao {
         }
         return apostador;
     }
+    
+    
+    public Apostador buscaApostadorUniqueResult(String cpf) {
+        Session sessao = null;
+        Transaction transacao = null;
+        Query consulta = null;
+
+        Apostador apostador = new Apostador();
+        try {
+            sessao = Hibernate4Util_UnicaSessao.getSessionFactory();
+            transacao = sessao.beginTransaction();
+
+            consulta = sessao.createQuery("from Apostador where cpf = :parametro");
+            consulta.setString("parametro", cpf);
+
+            try {
+                apostador = (Apostador) consulta.uniqueResult();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            transacao.commit();
+            return apostador;
+        } catch (HibernateException e) {
+            System.out.println("Não foi possível buscar Grupo De Apostadores. Erro: " + e.getMessage());
+        }
+        return apostador;
+    }
 }

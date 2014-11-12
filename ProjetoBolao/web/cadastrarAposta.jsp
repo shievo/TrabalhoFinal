@@ -46,8 +46,8 @@
                     %>
                 </select><br><br>
                
-                <label for="time1">Time 1 </label><input type="text" name="placarTime1" value="" size="2" />
-                <label for="time2">Time 2 </label><input type="text" name="placarTime2" value="" size="2" />
+                <label for="placarTime1">Time 1 </label><input type="text" name="placarTime1" value="" size="2" />
+                <label for="placarTime2">Time 2 </label><input type="text" name="placarTime2" value="" size="2" />
 
                 <br />
                 <br />

@@ -41,7 +41,8 @@ public class Aposta implements Serializable {
     @Column(name = "placar_time2")
     private int placar_time2;
 
-    @Column(name = "vencedor")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "cod_time")
     private Time vencedor;
 
     public int getCod_aposta() {
@@ -96,7 +97,13 @@ public class Aposta implements Serializable {
         return vencedor;
     }
 
-    public void setVencedor(Time vencedor) {
-        this.vencedor = vencedor;
+    public void setVencedor() {
+        vencedor = null;
+        if (this.placar_time1 > this.placar_time2) {
+            this.vencedor = jogo.getTime1();
+        }
+        if (this.placar_time1 < this.placar_time2) {
+            this.vencedor = jogo.getTime2();
+        }
     }
 }

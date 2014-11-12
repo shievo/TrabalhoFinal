@@ -37,6 +37,8 @@ public class JogoDao {
             System.out.println("Não foi possível alterar o Jogo. Erro: " + e.getMessage());
         }
     }
+    
+    
 
     public void excluir(Jogo jogo) {
         Session sessao = null;

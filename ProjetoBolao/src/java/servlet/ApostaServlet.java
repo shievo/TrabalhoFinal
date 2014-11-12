@@ -6,13 +6,20 @@
 
 package servlet;
 
+import dao.ApostaDao;
+import dao.ApostadorDao;
+import dao.JogoDao;
+import dao.TimeDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Aposta;
+import modelo.Time;
 
 /**
  *
@@ -41,6 +48,19 @@ public class ApostaServlet extends HttpServlet {
             out.println("<title>Servlet ApostaServlet</title>");            
             out.println("</head>");
             out.println("<body>");
+            
+            Aposta aposta = new Aposta();
+            aposta.setData_aposta(new Date());
+            aposta.setJogo(new JogoDao().buscaJogoUniqueResult(Integer.valueOf(request.getParameter("cod_jogo"))));
+            aposta.setPlacar_time1(Integer.valueOf(request.getParameter("placarTime1")));
+            aposta.setPlacar_time2(Integer.valueOf(request.getParameter("placarTime2")));
+            aposta.setApostador(new ApostadorDao().buscaApostadorUniqueResult(request.getParameter("cpf")));
+            aposta.setVencedor();
+            
+            new ApostaDao().salvar(aposta);
+            
+            response.sendRedirect("index.html");
+            
             out.println("<h1>Servlet ApostaServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
