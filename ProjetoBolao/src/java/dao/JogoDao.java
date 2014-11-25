@@ -3,10 +3,12 @@ package dao;
 import conexao.Hibernate4Util_UnicaSessao;
 import java.util.List;
 import modelo.Jogo;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 public class JogoDao {
 
@@ -37,8 +39,6 @@ public class JogoDao {
             System.out.println("Não foi possível alterar o Jogo. Erro: " + e.getMessage());
         }
     }
-    
-    
 
     public void excluir(Jogo jogo) {
         Session sessao = null;
@@ -129,23 +129,10 @@ public class JogoDao {
 
     public Jogo buscaJogoUniqueResult(int cod_jogo) {
         Session sessao = null;
-        Transaction transacao = null;
-        Query consulta = null;
-
         Jogo jogo = new Jogo();
         try {
             sessao = Hibernate4Util_UnicaSessao.getSessionFactory();
-            transacao = sessao.beginTransaction();
-
-            consulta = sessao.createQuery("from Jogo where cod_jogo = :parametro");
-            consulta.setInteger("parametro", cod_jogo);
-
-            try {
-                jogo = (Jogo) consulta.uniqueResult();
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-            transacao.commit();
+            jogo = (Jogo) sessao.createCriteria(Jogo.class).add(Restrictions.idEq(cod_jogo)).uniqueResult();
             return jogo;
         } catch (HibernateException e) {
             System.out.println("Não foi possível buscar Jogo. Erro: " + e.getMessage());
